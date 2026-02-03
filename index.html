@@ -304,6 +304,52 @@
             }
         }
 
+        /* สไตล์พื้นฐานของปุ่ม Toggle (ซ่อนไว้ก่อนในคอม) */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* เมื่อหน้าจอเล็กลง (โทรศัพท์) */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                /* แสดงปุ่มเมนู */
+            }
+
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                /* ปรับตามความสูงของ header */
+                background-color: #fff;
+                width: 100%;
+                display: none;
+                /* ซ่อนเมนูไว้เริ่มต้น */
+                flex-direction: column;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+                /* แสดงเมื่อมีการกดปุ่ม */
+            }
+
+            .nav-links li {
+                padding: 15px 0;
+            }
+        }
+
 
         /* สำหรับ Mobile (หน้าจอเล็กกว่า 768px) */
         @media (max-width: 768px) {
@@ -496,6 +542,14 @@
     <footer>
         <p>&copy; FUSION OFFICIAL</p>
     </footer>
+    <script>
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.nav-links');
+
+        menu.addEventListener('click', function () {
+            menuLinks.classList.toggle('active'); // สลับการแสดงผลเมนู
+        });
+    </script>
 
 </body>
 
