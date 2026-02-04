@@ -1,582 +1,369 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUSION168</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
+        /* --- 1. Global Styles --- */
         :root {
-            --theme-accent-blue: #0091c9;
-            --theme-light-blue-bg: #f0f9ff;
-            --theme-dark-blue-footer: #1b3a4f;
-            --theme-text-dark: #333333;
-            --theme-text-light-gray: #666666;
-            --theme-bg-clean: #ffffff;
+            --primary: #2563eb;       
+            --primary-dark: #1e40af; 
+            --accent: #60a5fa;        
+            --bg-light: #f8fafc;      
+            --text-dark: #334155;     
+            --glass: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 20px -5px rgba(37, 99, 235, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Sarabun', 'Kanit', sans-serif;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prompt', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
 
-        body {
-            line-height: 1.6;
-            color: var(--theme-text-dark);
-            background-color: #f8faff;
-            overflow-x: hidden;
-        }
-
-        /* --- Header & Navigation --- */
-        header {
-            background-color: var(--theme-bg-clean);
-            box-shadow: 0 2px 10px rgba(0, 145, 201, 0.1);
-            position: sticky;
-            top: 0;
+        /* --- 2. Navbar (Responsive Design) --- */
+        .navbar {
+            position: fixed; top: 0; width: 100%; height: 70px;
+            padding: 0 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--glass); backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 1000;
         }
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); z-index: 1001; }
+
+        /* Menu Links (Desktop) */
+        .nav-menu {
+            display: flex; align-items: center; gap: 2rem; list-style: none;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--theme-accent-blue);
-            text-decoration: none;
-            letter-spacing: 1px;
+        .nav-link {
+            text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s;
+            font-size: 1rem;
         }
+        .nav-link:hover { color: var(--primary); }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--theme-text-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--theme-accent-blue);
-        }
-
-        /* --- Mobile Menu Toggle --- */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .menu-toggle .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--theme-text-dark);
+        .btn-cta {
+            background: var(--primary); color: white !important;
+            padding: 0.5rem 1.5rem; border-radius: 50px;
             transition: 0.3s;
-            border-radius: 3px;
+        }
+        .btn-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none; cursor: pointer; z-index: 1001;
+        }
+        .bar {
+            display: block; width: 25px; height: 3px; margin: 5px auto;
+            transition: all 0.3s ease-in-out; background-color: var(--text-dark);
         }
 
-        /* --- Hero Section --- */
+        /* --- Mobile Menu Styles --- */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+
+            /* Animation: Turn Hamburger to X */
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            .nav-menu {
+                position: fixed;
+                top: 0; right: -100%; /* ซ่อนไปทางขวาก่อน */
+                flex-direction: column;
+                justify-content: center;
+                width: 80%; 
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98); 
+                backdrop-filter: blur(10px);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+                z-index: 1000;
+                padding-top: 60px;
+            }
+
+            .nav-menu.active { right: 0; }
+            .nav-item { margin: 1.5rem 0; }
+            .nav-link { font-size: 1.2rem; }
+        }
+
+        /* --- 3. Hero Section --- */
+        section { padding: 5rem 10%; scroll-margin-top: 70px; }
         .hero {
-            background-color: var(--theme-bg-clean);
-            text-align: center;
-            padding: 100px 20px;
-            border-bottom: 1px solid #e6eff5;
+            min-height: 90vh;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
         }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--theme-text-light-gray);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--theme-text-dark);
+            font-size: 3rem; margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.5rem; margin-bottom: 1rem;
+
         }
 
-        /* --- Common Section Styles --- */
-        .section {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+        /* --- 4. Product Section (UPDATED IMAGE FIT) --- */
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; color: var(--primary-dark); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        
+        .product-card { 
+            background: white; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow); 
+            border: 1px solid #e2e8f0; 
+            transition: transform 0.3s ease;
         }
+        .product-card:hover { transform: translateY(-5px); }
 
-        .bg-light-blue {
-            background-color: var(--theme-light-blue-bg);
-            /* เพิ่ม background class ถ้าต้องการพื้นหลังสีฟ้าอ่อนเต็มความกว้าง (อาจต้องปรับ structure div เล็กน้อย) */
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--theme-accent-blue);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        /* --- Product Section --- */
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
+        /* ส่วนที่แก้ไขรูปภาพ: ให้แสดงเต็มรูป ไม่โดนตัด */
+        .product-img-box { 
+            width: 100%; 
+            height: 350px; 
+            background-color: #ffffff; /* เปลี่ยนพื้นหลังเป็นขาว */
             display: flex;
-            flex-direction: column;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .product-img img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 50px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--theme-accent-blue);
-        }
-
-        .product-info p {
-            font-size: 1.6rem;
-            color: var(--theme-text-light-gray);
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        /* --- Why Us Section --- */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .feature-item {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .feature-number {
-            font-size: 2.5rem;
-            color: var(--theme-accent-blue);
-            font-weight: 600;
-            margin-bottom: 15px;
-            opacity: 0.8;
-        }
-
-        /* --- About Section --- */
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            min-height: 450px;
-            width: 100%;
-        }
-
-        .about-content-box {
-            flex: 1;
-            background-color: var(--theme-light-blue-bg);
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 60px 40px;
-            text-align: center;
+            overflow: hidden;
+            padding: 15px; /* เพิ่มระยะขอบไม่ให้รูปชิดเกินไป */
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        .about-content-box h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
+        .product-img-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* เปลี่ยนเป็น contain เพื่อให้รูปไม่โดนตัด */
+            transition: transform 0.5s ease;
+        }   
 
-        .about-content-box h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #333;
-            margin: 10px auto 0;
-        }
-
-        .about-content-box p {
-            max-width: 600px;
-            margin-top: 20px;
-            font-size: 1.3rem;
-            color: var(--theme-text-dark);
-            line-height: 1.8;
-        }
-
-        .about-image-box {
-            flex: 1;
-            min-width: 350px;
-        }
-
-        .about-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* --- Contact & Map --- */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .contact-box {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .social-links {
-            margin: 20px 0;
+        .product-card:hover .product-img-box img { transform: scale(1.08); }
+        
+        .product-info { padding: 1.5rem; }
+        
+        /* --- Styles สำหรับราคาส่วนลด (เพิ่มใหม่) --- */
+        .price-box {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            text-decoration: none;
-            color: var(--theme-accent-blue);
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: opacity 0.3s;
+            align-items: baseline;
+            gap: 10px;
+            margin-top: 10px;
         }
         
-        .social-links a:hover {
-            opacity: 0.7;
-            text-decoration: underline;
+        .price-old {
+            text-decoration: line-through; /* ขีดเส้นตาย */
+            color: #94a3b8; /* สีเทา */
+            font-size: 0.9rem;
+        }
+        
+        .price-new {
+            color: #dc2626; /* สีแดง */
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
-        .map-wrapper {
-            border-radius: 15px;
-            overflow: hidden;
-            min-height: 400px;
-            position: relative;
-        }
+        /* --- 5. Why Us --- */
+        #why-us { background-color: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .feature-item { background: #f8fafc; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; gap: 1.2rem; border-left: 4px solid var(--primary); }
+        .feature-number { font-size: 2.5rem; font-weight: 800; color: var(--accent); opacity: 0.4; line-height: 1; min-width: 60px; }
+        .feature-text { font-size: 1.1rem; font-weight: 500; color: var(--primary-dark); }
 
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .qr-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .qr-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .qr-placeholder {
-            width: 140px;
-            height: 140px;
-            background: #f0f0f0;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #eee;
-        }
-
-        .qr-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .qr-label {
-            font-weight: 500;
-            color: var(--theme-text-dark);
-            font-size: 0.95rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--theme-dark-blue-footer);
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
-
-        /* --- Responsive Logic --- */
-        @media (min-width: 769px) {
-            .product-card {
-                flex-direction: row;
-                min-height: 500px;
-            }
-
-            .product-card:nth-child(even) {
-                flex-direction: row-reverse;
-            }
-
-            .product-img,
-            .product-info {
-                flex: 1;
-            }
-        }
+        /* --- 6. Contact Section --- */
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .qr-wrapper { display: flex; flex-direction: column; gap: 1rem; }
+        .qr-box { background: white; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .qr-img { width: 280px; height: 280px; background: #ddd; object-fit: cover; }
+        .map-wrapper { min-height: 300px; border-radius: 15px; overflow: hidden; }
 
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px 0;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                padding: 15px 0;
-                border-bottom: 1px solid #f8f8f8;
-                text-align: center;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            /* Burger to X Animation */
-            .menu-toggle.is-active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.is-active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .menu-toggle.is-active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
+            .contact-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
-
 <body>
 
-    <header>
-        <nav>
-            <a href="#" class="logo">FUSION OFFICIAL</a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#product">Product</a></li>
-                <li><a href="#whyus">Why Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar">
+        <div class="logo">FUSION168</div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#home" class="nav-link" onclick="closeMenu()">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link" onclick="closeMenu()">About Us</a></li>
+            <li class="nav-item"><a href="#product" class="nav-link" onclick="closeMenu()">Product</a></li>
+            <li class="nav-item"><a href="#why-us" class="nav-link" onclick="closeMenu()">Why Us</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link btn-cta" onclick="closeMenu()">Contact</a></li>
+        </ul>
+
+        <div class="hamburger" onclick="mobileMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 
     <section id="home" class="hero">
-        <h1>FUSION ผสานคุณภาพ เพื่อสุขภาพที่ดีในทุกวัน</h1>
-        <p>FUSION คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่มุ่งเน้นการคัดสรรวัตถุดิบคุณภาพผสานมาตรฐานการผลิตที่ได้รับการรับรองเพื่อส่งต่อผลิตภัณฑ์ที่เหมาะกับการดูแลสุขภาพในชีวิตประจำวัน</p>
-    </section>
-
-    <section id="about" class="about-section">
-        <div class="about-content-box">
-            <h2>ABOUT US</h2>
-            <p>
-                FUSION คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่ก่อตั้งขึ้นจากความตั้งใจใน
-                การยกระดับการดูแลสุขภาพของผู้บริโภคผ่านการผสาน (FUSION) ระหว่าง
-                คุณภาพ ความปลอดภัย และความเข้าใจในร่างกายมนุษย์เราเชื่อว่าสุขภาพที่ดี
-                ไม่ใช่เรื่องไกลตัวแต่เริ่มต้นได้จากการดูแลตัวเองอย่างสม่ำเสมอและเลือกสิ่งที่
-                เหมาะสมกับร่างกาย
-            </p>
-        </div>
-        <div class="about-image-box">
-            <img src="img/FUSION.jpg" alt="About Fusion">
+        <div>
+            <h1>FUSION168<br>ผสานคุณภาพ เพื่อสุขภาพที่ดีในทุกวัน</h1>
+            <p>FUSION คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่มุ่งเน้นการคัดสรรวัตถุดิบคุณภาพผสานมาตรฐานการผลิตที่ได้รับการรับรองเพื่อส่งต่อผลิตภัณฑ์ที่เหมาะกับการดูแลสุขภาพในชีวิตประจำวัน</p>
         </div>
     </section>
 
-    <section id="product" class="section">
+    <section id="about" style="background: white;">
+        <h2 class="section-title">About Us</h2>
+        
+        <p style="text-align: center; max-width: 700px; margin: 0 auto; font-size: 1.5rem; ">
+            FUSION คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่ก่อตั้งขึ้นจากความตั้งใจใน การยกระดับการดูแลสุขภาพของผู้บริโภคผ่านการผสาน
+            (FUSION) ระหว่าง คุณภาพ ความปลอดภัย และความเข้าใจในร่างกายมนุษย์เราเชื่อว่าสุขภาพที่ดี 
+            ไม่ใช่เรื่องไกลตัวแต่เริ่มต้นได้จากการดูแลตัวเองอย่างสม่ำเสมอและเลือกสิ่งที่ เหมาะสมกับร่างกาย
+        </p>
+    </section>
+
+    <section id="product">
         <h2 class="section-title">Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img-box"><img src="img/richie.png" alt="RICHIE"></div>
+                <div class="product-info">
+                    <h3>RICHIE (ริชชี่)</h3>
+                    <p>ผลิตภัณฑ์ดูแลระบบขับถ่ายและดีท็อกซ์ลำไส้ สารสกัดจากธรรมชาติ 100%</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 780</span>
+                        <span class="price-new">฿ 1 แถม 1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;390.-</span>
+                    </div>
+                </div>
+            </div>
 
-        <div class="product-card">
-            <div class="product-img">
-                <img src="img/richie.png" alt="RICHIE">
+            <div class="product-card">
+                <div class="product-img-box"><img src="img/mux.png" alt="สินค้า B"></div>
+                <div class="product-info">
+                    <h3>MUX (เอ็มยู-เอ็กซ์)</h3>
+                    <p>เสริมสร้างความแข็งแรงและบำรุงสุขภาพสำหรับท่านชาย ด้วยสารสกัดคุณภาพสูง ให้คุณพร้อมสำหรับทุกกิจกรรมในทุกๆ วัน</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 860</span>
+                        <span class="price-new">฿ 1 แถม 1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;350.-</span>
+                    </div>
+                </div>
             </div>
-            <div class="product-info">
-                <h3>RICHIE (ริชชี่)</h3>
-                <p>ผลิตภัณฑ์ดูแลระบบขับถ่ายและดีท็อกซ์ลำไส้ สารสกัดจากธรรมชาติ 100% ช่วยให้คุณรู้สึกสบายตัว พุงยุบ และสุขภาพดีจากภายใน</p>
-            </div>
-        </div>
 
-        <div class="product-card">
-            <div class="product-img">
-                <img src="img/mux.png" alt="MUX">
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3" alt="สินค้า C"></div>
+                <div class="product-info">
+                    <h3>ชื่อสินค้า C</h3>
+                    <p>สรรพคุณสินค้า C จากธรรมชาติ...</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 1,050</span>
+                        <span class="price-new">฿ 850.-</span>
+                    </div>
+                </div>
             </div>
-            <div class="product-info">
-                <h3>MUX (เอ็มยู-เอ็กซ์)</h3>
-                <p>เสริมสร้างความแข็งแรงและบำรุงสุขภาพสำหรับท่านชาย ด้วยสารสกัดคุณภาพสูง ให้คุณพร้อมสำหรับทุกกิจกรรมในทุกๆ วัน</p>
+
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3" alt="สินค้า D"></div>
+                <div class="product-info">
+                    <h3>ชื่อสินค้า D</h3>
+                    <p>สรรพคุณสินค้า D จากธรรมชาติ...</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 1,050</span>
+                        <span class="price-new">฿ 850.-</span>
+                    </div>
+                </div>
             </div>
+
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3" alt="สินค้า E"></div>
+                <div class="product-info">
+                    <h3>ชื่อสินค้า E</h3>
+                    <p>สรรพคุณสินค้า E จากธรรมชาติ...</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 1,050</span>
+                        <span class="price-new">฿ 850.-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3" alt="สินค้า F"></div>
+                <div class="product-info">
+                    <h3>ชื่อสินค้า F</h3>
+                    <p>สรรพคุณสินค้า F จากธรรมชาติ...</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 1,050</span>
+                        <span class="price-new">฿ 850.-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3" alt="สินค้า G"></div>
+                <div class="product-info">
+                    <h3>ชื่อสินค้า G</h3>
+                    <p>สรรพคุณสินค้า G จากธรรมชาติ...</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 1,050</span>
+                        <span class="price-new">฿ 850.-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3" alt="สินค้า H"></div>
+                <div class="product-info">
+                    <h3>ชื่อสินค้า H</h3>
+                    <p>สรรพคุณสินค้า H จากธรรมชาติ...</p>
+                    <div class="price-box">
+                        <span class="price-old">฿ 1,050</span>
+                        <span class="price-new">฿ 1แถม1 850.-</span>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
-    <section id="whyus" class="section bg-light-blue">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 class="section-title">Why Us</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-number">01</div>
-                    <h3>ขึ้นทะเบียน อย. ถูกต้อง</h3>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-number">02</div>
-                    <h3>ส่วนประกอบคุณภาพสูง</h3>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-number">03</div>
-                    <h3>โรงงานมาตรฐานสากล</h3>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-number">04</div>
-                    <h3>จริงใจ ไม่โฆษณาเกินจริง</h3>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-number">05</div>
-                    <h3>เหมาะสำหรับการดูแลสุขภาพในชีวิตประจำวัน</h3>
-                </div>
-            </div>
+    <section id="why-us">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="features-grid">
+            <div class="feature-item"><div class="feature-number">01</div><div class="feature-text">ขึ้นทะเบียน อย. ถูกต้อง</div></div>
+            <div class="feature-item"><div class="feature-number">02</div><div class="feature-text">ส่วนประกอบคุณภาพสูง</div></div>
+            <div class="feature-item"><div class="feature-number">03</div><div class="feature-text">โรงงานมาตรฐานสากล</div></div>
+            <div class="feature-item"><div class="feature-number">04</div><div class="feature-text">จริงใจ ไม่โฆษณาเกินจริง</div></div>
+            <div class="feature-item"><div class="feature-number">05</div><div class="feature-text">เหมาะสำหรับการดูแลสุขภาพในชีวิตประจำวัน</div></div>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact">
         <h2 class="section-title">Contact Us</h2>
         <div class="contact-container">
-            <div class="contact-box">
-                <h3>FUSION OFFICIAL</h3>    
-                <p class="address">444/1 ตำบลหนองหาร อำเภอสันทราย จังหวัดเชียงใหม่</p>
-                <p class="address">โทร : 061-268-8564</p>
-                <p class="address">fusion168company@gmail.com</p>
-                
-                <div class="social-links">
-                    <a href="https://www.facebook.com/people/Fusion-%E0%B9%80%E0%B8%9E%E0%B8%88%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%81/61572536193468/" target="_blank">Facebook</a>
-                    <a href="https://www.tiktok.com/@fusion168s" target="_blank">TikTok</a>
-                    <a href="https://www.instagram.com/fusion168_th/" target="_blank">Instagram</a>
-                </div>
-
-                <div class="qr-wrapper">
-                    <div class="qr-item">
-                        <div class="qr-placeholder">
-                            <img src="img/line.png" alt="Line Official QR">
-                        </div>
-                        <span class="qr-label">Line Official</span>
-                    </div>
-
-                    <div class="qr-item">
-                        <div class="qr-placeholder">
-                            <img src="img/linktree.png" alt="Linktree">
-                        </div>
-                        <span class="qr-label">Link Tree</span>
-                    </div>
-                </div>
+            <div class="qr-wrapper">
+                <div class="qr-box"><img src="img/line.png" class="qr-img"><div><h4>LINE</h4><p style="font-size:0.9rem;">สอบถามข้อมูล</p></div></div>
+                <div class="qr-box"><img src="img/linktree.png" class="qr-img"><div><h4>LINKTREE</h4><p style="font-size:0.9rem;">ช่องทางการติดตาม</p></div></div>
             </div>
-
             <div class="map-wrapper">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.8685350237242!2d98.9981406!3d18.892912499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da22be0d47bf9d%3A0x41a004b21476d36a!2zVlhWWCs1NzYg4Lit4Liz4LmA4Lig4Lit4Liq4Lix4LiZ4LiX4Lij4Liy4LiiIOC5gOC4iuC4teC4ouC4h-C5g-C4q-C4oeC5iA!5e0!3m2!1sth!2sth!4v1770169525029!5m2!1sth!2sth" 
-                    loading="lazy">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.8685350237242!2d98.9981406!3d18.892912499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da22be0d47bf9d%3A0x41a004b21476d36a!2zVlhWWCs1NzYg4Lit4Liz4LmA4Lig4Lit4Liq4Lix4LiZ4LiX4Lij4Liy4LiiIOC5gOC4iuC4teC4ouC4h-C5g-C4q-C4oeC5iA!5e0!3m2!1sth!" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>© FUSION OFFICIAL</p>
-    </footer>
-
     <script>
-        const menu = document.querySelector('#mobile-menu');
-        const menuLinks = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li a');
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
 
-        menu.addEventListener('click', () => {
-            menu.classList.toggle('is-active');
-            menuLinks.classList.toggle('active');
-        });
+        // ฟังก์ชันเปิด-ปิดเมนู
+        function mobileMenu() {
+            hamburger.classList.toggle("active"); // เปลี่ยนไอคอนเป็นรูป X
+            navMenu.classList.toggle("active");   // เลื่อนเมนูออกมา
+        }
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove('is-active');
-                menuLinks.classList.remove('active');
-            });
-        });
+        // ฟังก์ชันปิดเมนูเมื่อกดที่ลิงก์
+        function closeMenu() {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }
     </script>
 </body>
-
 </html>
