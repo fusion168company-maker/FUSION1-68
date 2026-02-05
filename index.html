@@ -108,310 +108,160 @@
             background-color: var(--text-dark);
         }
 
-        /* --- Social Media Buttons (New Style) --- */
-        .social-links {
-            margin: 30px 0 40px 0; /* เพิ่มระยะห่างบนล่าง */
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px; /* ระยะห่างระหว่างไอคอนกับตัวหนังสือ */
-            padding: 12px 30px;
-            border-radius: 50px; /* ทรงแคปซูลมนๆ */
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: white !important; /* บังคับตัวหนังสือสีขาว */
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* เงาพื้นฐาน */
-        }
-
-        .social-btn i {
-            font-size: 1.4rem; /* ขยายไอคอนให้ใหญ่ขึ้น */
-        }
-
-        /* --- Brand Specific Colors --- */
-        
-        /* Facebook */
-        .btn-fb {
-            background-color: #1877F2;
-        }
-        .btn-fb:hover {
-            transform: translateY(-5px); /* ลอยขึ้นเมื่อชี้ */
-            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4); /* เงาสีฟ้าฟุ้งๆ */
-        }
-
-        /* TikTok */
-        .btn-tiktok {
-            background-color: #000000;
-        }
-        .btn-tiktok:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Instagram (Gradient) */
-        .btn-ig {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        }
-        .btn-ig:hover {
-            transform: translateY(-5px);
-            filter: brightness(1.1); /* สว่างขึ้นเล็กน้อย */
-            box-shadow: 0 8px 25px rgba(225, 48, 108, 0.5); /* เงาสีชมพูฟุ้งๆ */
-        }
-
         /* --- Mobile Menu Styles --- */
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            /* Animation: Turn Hamburger to X */
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
+            .hamburger { display: block; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
             .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                /* ซ่อนไปทางขวาก่อน */
-                flex-direction: column;
-                justify-content: center;
-                width: 80%;
-                height: 100vh;
+                position: fixed; top: 0; right: -100%;
+                flex-direction: column; justify-content: center;
+                width: 80%; height: 100vh;
                 background: rgba(255, 255, 255, 0.98);
                 backdrop-filter: blur(10px);
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
                 transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 1000;
-                padding-top: 60px;
+                z-index: 1000; padding-top: 60px;
             }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-item {
-                margin: 1.5rem 0;
-            }
-
-            .nav-link {
-                font-size: 1.2rem;
-            }
+            .nav-menu.active { right: 0; }
+            .nav-item { margin: 1.5rem 0; }
+            .nav-link { font-size: 1.2rem; }
         }
 
         /* --- 3. Hero Section --- */
-        section {
-            padding: 5rem 10%;
-            scroll-margin-top: 70px;
-        }
-
+        section { padding: 5rem 10%; scroll-margin-top: 70px; }
         .hero {
             min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             text-align: center;
             background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
         }
-
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3rem; margin-bottom: 1rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .hero p { font-size: 1.5rem; margin-bottom: 1rem; }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-
-        }
-
-        /* --- 4. Product Section (UPDATED IMAGE FIT) --- */
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: var(--primary-dark);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
+        /* --- 4. Product Section --- */
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; color: var(--primary-dark); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid #e2e8f0;
+            background: white; border-radius: 15px; overflow: hidden;
+            box-shadow: var(--shadow); border: 1px solid #e2e8f0;
             transition: transform 0.3s ease;
         }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* ส่วนที่แก้ไขรูปภาพ: ให้แสดงเต็มรูป ไม่โดนตัด */
+        .product-card:hover { transform: translateY(-5px); }
         .product-img-box {
-            width: 100%;
-            height: 350px;
-            background-color: #ffffff;
-            /* เปลี่ยนพื้นหลังเป็นขาว */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            padding: 15px;
-            /* เพิ่มระยะขอบไม่ให้รูปชิดเกินไป */
-            border-bottom: 1px solid #f1f5f9;
+            width: 100%; height: 350px; background-color: #ffffff;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; padding: 15px; border-bottom: 1px solid #f1f5f9;
         }
-
-        footer {
-            background: var(--theme-dark-blue-footer);
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
-
         .product-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* เปลี่ยนเป็น contain เพื่อให้รูปไม่โดนตัด */
-            transition: transform 0.5s ease;
+            width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s ease;
         }
-
-        .product-card:hover .product-img-box img {
-            transform: scale(1.08);
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        /* --- Styles สำหรับราคาส่วนลด (เพิ่มใหม่) --- */
-        .price-box {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .price-old {
-            text-decoration: line-through;
-            /* ขีดเส้นตาย */
-            color: #94a3b8;
-            /* สีเทา */
-            font-size: 0.9rem;
-        }
-
-        .price-new {
-            color: #dc2626;
-            /* สีแดง */
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
+        .product-card:hover .product-img-box img { transform: scale(1.08); }
+        .product-info { padding: 1.5rem; }
+        
+        .price-box { display: flex; align-items: baseline; gap: 10px; margin-top: 10px; }
+        .price-old { text-decoration: line-through; color: #94a3b8; font-size: 0.9rem; }
+        .price-new { color: #dc2626; font-weight: 700; font-size: 1.2rem; }
 
         /* --- 5. Why Us --- */
-        #why-us {
-            background-color: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
+        #why-us { background-color: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .feature-item {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            border-left: 4px solid var(--primary);
+            background: #f8fafc; padding: 1.5rem; border-radius: 12px;
+            display: flex; align-items: center; gap: 1.2rem; border-left: 4px solid var(--primary);
+        }
+        .feature-number { font-size: 2.5rem; font-weight: 800; color: var(--accent); opacity: 0.4; line-height: 1; min-width: 60px; }
+        .feature-text { font-size: 1.1rem; font-weight: 500; color: var(--primary-dark); }
+
+        /* --- 6. Contact Section Styles (Enhanced) --- */
+        
+        /* Social Media Buttons */
+        .social-links {
+            margin: 30px 0 40px 0;
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+        }
+        .social-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            padding: 12px 30px; border-radius: 50px;
+            text-decoration: none; font-weight: 600; font-size: 1.1rem;
+            color: white !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .social-btn i { font-size: 1.4rem; }
+
+        /* Social Colors */
+        .btn-fb { background-color: #1877F2; }
+        .btn-fb:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4); }
+
+        .btn-tiktok { background-color: #000000; }
+        .btn-tiktok:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+
+        .btn-ig { background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
+        .btn-ig:hover { transform: translateY(-5px); filter: brightness(1.1); box-shadow: 0 8px 25px rgba(225, 48, 108, 0.5); }
+
+        /* Layout Grid */
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .qr-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        /* Contact Cards (Common) */
+        .contact-card {
+            background: white; border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0; overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .feature-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            opacity: 0.4;
-            line-height: 1;
-            min-width: 60px;
+        /* 1. Phone Card (Horizontal) */
+        .phone-mode {
+            display: flex; align-items: center; padding: 20px; gap: 20px;
+            background: linear-gradient(to right, #eff6ff, #ffffff);
+            border: 1px solid var(--primary);
         }
+        .phone-mode:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.15); }
+        
+        .icon-circle {
+            width: 60px; height: 60px; background: var(--primary);
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; flex-shrink: 0;
+        }
+        .phone-number { font-size: 1.5rem; font-weight: 800; color: var(--text-dark); line-height: 1.2; }
 
-        .feature-text {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--primary-dark);
+        /* 2. QR Mode (Vertical + Big Image) */
+        .qr-mode {
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; padding: 30px 20px; gap: 15px;
         }
+        .qr-frame {
+            background: white; padding: 10px;
+            border-radius: 12px; border: 2px dashed #cbd5e1;
+            display: inline-block;
+        }
+        .qr-big-img {
+            width: 300px; height: 300px; /* Big Size for easy scan */
+            object-fit: contain; display: block;
+        }
+        .btn-text-link {
+            display: inline-block; margin-top: 5px; color: var(--primary);
+            text-decoration: none; font-size: 0.9rem; font-weight: 600;
+        }
+        .btn-text-link:hover { text-decoration: underline; }
 
-        /* --- 6. Contact Section --- */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
+        /* Map */
+        .map-wrapper { min-height: 100px; border-radius: 15px; overflow: hidden; }
 
-        .qr-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .qr-box {
-            background: white;
-            border: 1px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .qr-img {
-            width: 280px;
-            height: 280px;
-            background: #ddd;
-            object-fit: cover;
-        }
-
-        .map-wrapper {
-            min-height: 300px;
-            border-radius: 15px;
-            overflow: hidden;
-        }
+        footer { background: var(--theme-dark-blue-footer); color: white; text-align: center; padding: 30px; }
 
         @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+            .contact-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            .qr-big-img { width: 160px; height: 160px; } /* Smaller on mobile but still clear */
         }
     </style>
 </head>
@@ -420,7 +270,6 @@
 
     <nav class="navbar">
         <div class="logo">FUSION168</div>
-
         <ul class="nav-menu">
             <li class="nav-item"><a href="#home" class="nav-link" onclick="closeMenu()">Home</a></li>
             <li class="nav-item"><a href="#about" class="nav-link" onclick="closeMenu()">About Us</a></li>
@@ -428,7 +277,6 @@
             <li class="nav-item"><a href="#why-us" class="nav-link" onclick="closeMenu()">Why Us</a></li>
             <li class="nav-item"><a href="#contact" class="nav-link btn-cta" onclick="closeMenu()">Contact</a></li>
         </ul>
-
         <div class="hamburger" onclick="mobileMenu()">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -439,20 +287,16 @@
     <section id="home" class="hero">
         <div>
             <h1>FUSION168<br>ผสานคุณภาพ เพื่อสุขภาพที่ดีในทุกวัน</h1>
-            <p>FUSION
-                คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่มุ่งเน้นการคัดสรรวัตถุดิบคุณภาพผสานมาตรฐานการผลิตที่ได้รับการรับรองเพื่อส่งต่อผลิตภัณฑ์ที่เหมาะกับการดูแลสุขภาพในชีวิตประจำวัน
-            </p>
+            <p>FUSION คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่มุ่งเน้นการคัดสรรวัตถุดิบคุณภาพผสานมาตรฐานการผลิตที่ได้รับการรับรองเพื่อส่งต่อผลิตภัณฑ์ที่เหมาะกับการดูแลสุขภาพในชีวิตประจำวัน</p>
         </div>
     </section>
 
     <section id="about" style="background: white;">
         <h2 class="section-title">About Us</h2>
-
-        <p style="text-align: center; max-width: 700px; margin: 0 auto; font-size: 1.5rem; ">
-            FUSION คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่ก่อตั้งขึ้นจากความตั้งใจใน
-            การยกระดับการดูแลสุขภาพของผู้บริโภคผ่านการผสาน
-            (FUSION) ระหว่าง คุณภาพ ความปลอดภัย และความเข้าใจในร่างกายมนุษย์เราเชื่อว่าสุขภาพที่ดี
-            ไม่ใช่เรื่องไกลตัวแต่เริ่มต้นได้จากการดูแลตัวเองอย่างสม่ำเสมอและเลือกสิ่งที่ เหมาะสมกับร่างกาย
+        <p style="text-align: center; max-width: 1000px; margin: 0 auto; font-size: 1.5rem;">
+            FUSION คือบริษัทด้านอาหารเสริมเพื่อสุขภาพที่ก่อตั้งขึ้นจากความตั้งใจใน การยกระดับการดูแลสุขภาพของผู้บริโภคผ่านการผสาน
+             (FUSION) ระหว่าง คุณภาพ ความปลอดภัย และความเข้าใจในร่างกายมนุษย์เราเชื่อว่าสุขภาพที่ดี
+             ไม่ใช่เรื่องไกลตัวแต่เริ่มต้นได้จากการดูแลตัวเองอย่างสม่ำเสมอและเลือกสิ่งที่ เหมาะสมกับร่างกาย
         </p>
     </section>
 
@@ -463,133 +307,43 @@
                 <div class="product-img-box"><img src="img/richie.png" alt="RICHIE"></div>
                 <div class="product-info">
                     <h3>RICHIE (ริชชี่)</h3>
-                    <p>ผลิตภัณฑ์ดูแลระบบขับถ่ายและดีท็อกซ์ลำไส้ สารสกัดจากธรรมชาติ 100%</p>
+                    <p>ผลิตภัณฑ์ดูแลระบบขับถ่ายและดีท็อกซ์ลำไส้</p>
                     <div class="price-box">
                         <span class="price-old">฿ 780</span>
-                        <span class="price-new">฿ 1 แถม 1              
-                             390.-</span>
+                        <span class="price-new">฿ 1 แถม 1 : 390.-</span>
                     </div>
                 </div>
             </div>
-
             <div class="product-card">
-                <div class="product-img-box"><img src="img/mux.png" alt="สินค้า B"></div>
+                <div class="product-img-box"><img src="img/mux.png" alt="MUX"></div>
                 <div class="product-info">
                     <h3>MUX (เอ็มยู-เอ็กซ์)</h3>
-                    <p>เสริมสร้างความแข็งแรงและบำรุงสุขภาพสำหรับท่านชาย ด้วยสารสกัดคุณภาพสูง
-                        ให้คุณพร้อมสำหรับทุกกิจกรรมในทุกๆ วัน</p>
+                    <p>เสริมสร้างความแข็งแรงและบำรุงสุขภาพสำหรับท่านชาย</p>
                     <div class="price-box">
                         <span class="price-old">฿ 860</span>
-                        <span class="price-new">฿ 1 แถม 1              
-                             350.-</span>
+                        <span class="price-new">฿ 1 แถม 1 : 350.-</span>
                     </div>
                 </div>
             </div>
-
             <div class="product-card">
-                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3"
-                        alt="สินค้า C"></div>
+                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=More+Product" alt="สินค้าอื่นๆ"></div>
                 <div class="product-info">
-                    <h3>ชื่อสินค้า C</h3>
-                    <p>สรรพคุณสินค้า C จากธรรมชาติ...</p>
-                    <div class="price-box">
-                        <span class="price-old">฿ 1,050</span>
-                        <span class="price-new">฿ 850.-</span>
-                    </div>
+                    <h3>สินค้าอื่นๆ</h3>
+                    <p>รอติดตามสินค้าใหม่เร็วๆ นี้</p>
+                    <div class="price-box"><span class="price-new">Coming Soon</span></div>
                 </div>
             </div>
-
-            <div class="product-card">
-                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3"
-                        alt="สินค้า D"></div>
-                <div class="product-info">
-                    <h3>ชื่อสินค้า D</h3>
-                    <p>สรรพคุณสินค้า D จากธรรมชาติ...</p>
-                    <div class="price-box">
-                        <span class="price-old">฿ 1,050</span>
-                        <span class="price-new">฿ 850.-</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3"
-                        alt="สินค้า E"></div>
-                <div class="product-info">
-                    <h3>ชื่อสินค้า E</h3>
-                    <p>สรรพคุณสินค้า E จากธรรมชาติ...</p>
-                    <div class="price-box">
-                        <span class="price-old">฿ 1,050</span>
-                        <span class="price-new">฿ 850.-</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3"
-                        alt="สินค้า F"></div>
-                <div class="product-info">
-                    <h3>ชื่อสินค้า F</h3>
-                    <p>สรรพคุณสินค้า F จากธรรมชาติ...</p>
-                    <div class="price-box">
-                        <span class="price-old">฿ 1,050</span>
-                        <span class="price-new">฿ 850.-</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3"
-                        alt="สินค้า G"></div>
-                <div class="product-info">
-                    <h3>ชื่อสินค้า G</h3>
-                    <p>สรรพคุณสินค้า G จากธรรมชาติ...</p>
-                    <div class="price-box">
-                        <span class="price-old">฿ 1,050</span>
-                        <span class="price-new">฿ 850.-</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img-box"><img src="https://via.placeholder.com/400x300?text=Product+3"
-                        alt="สินค้า H"></div>
-                <div class="product-info">
-                    <h3>ชื่อสินค้า H</h3>
-                    <p>สรรพคุณสินค้า H จากธรรมชาติ...</p>
-                    <div class="price-box">
-                        <span class="price-old">฿ 1,050</span>
-                        <span class="price-new">฿ 1แถม1 850.-</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
     <section id="why-us">
         <h2 class="section-title">Why Choose Us?</h2>
         <div class="features-grid">
-            <div class="feature-item">
-                <div class="feature-number">01</div>
-                <div class="feature-text">ขึ้นทะเบียน อย. ถูกต้อง</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-number">02</div>
-                <div class="feature-text">ส่วนประกอบคุณภาพสูง</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-number">03</div>
-                <div class="feature-text">โรงงานมาตรฐานสากล</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-number">04</div>
-                <div class="feature-text">จริงใจ ไม่โฆษณาเกินจริง</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-number">05</div>
-                <div class="feature-text">เหมาะสำหรับการดูแลสุขภาพในชีวิตประจำวัน</div>
-            </div>
+            <div class="feature-item"><div class="feature-number">01</div><div class="feature-text">ขึ้นทะเบียน อย. ถูกต้อง</div></div>
+            <div class="feature-item"><div class="feature-number">02</div><div class="feature-text">ส่วนประกอบคุณภาพสูง</div></div>
+            <div class="feature-item"><div class="feature-number">03</div><div class="feature-text">โรงงานมาตรฐานสากล</div></div>
+            <div class="feature-item"><div class="feature-number">04</div><div class="feature-text">จริงใจ ไม่โฆษณาเกินจริง</div></div>
+            <div class="feature-item"><div class="feature-number">05</div><div class="feature-text">เหมาะสำหรับการดูแลสุขภาพในชีวิตประจำวัน</div></div>
         </div>
     </section>
 
@@ -598,65 +352,74 @@
         
         <div class="social-links">
             <a href="https://www.facebook.com/people/Fusion-%E0%B9%80%E0%B8%9E%E0%B8%88%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%81/61572536193468/" 
-               target="_blank" class="social-btn btn-fb">
-                <i class="fab fa-facebook-f"></i> Facebook
-            </a>
-
+               target="_blank" class="social-btn btn-fb"><i class="fab fa-facebook-f"></i> Facebook</a>
             <a href="https://www.tiktok.com/@fusion168s" 
-               target="_blank" class="social-btn btn-tiktok">
-                <i class="fab fa-tiktok"></i> TikTok
-            </a>
-
+               target="_blank" class="social-btn btn-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
             <a href="https://www.instagram.com/fusion168_th/" 
-               target="_blank" class="social-btn btn-ig">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
+               target="_blank" class="social-btn btn-ig"><i class="fab fa-instagram"></i> Instagram</a>
         </div>
 
         <div class="contact-container">
-
             <div class="qr-wrapper">
-                <div class="qr-box"><img src="img/line.png" class="qr-img">
-                    <div>
-                        <h4>LINE</h4>
-                        <p style="font-size:0.9rem;">สอบถามข้อมูล</p>
+                
+                <a href="tel:0812345678" style="text-decoration: none; color: inherit;">
+                    <div class="contact-card phone-mode">
+                        <div class="icon-circle">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="text-content">
+                            <h4 style="color: var(--primary); font-size: 1.2rem;">โทรสอบถาม</h4>
+                            <p class="phone-number">061-268-8564</p>
+                            <p style="font-size:0.8rem; color: #64748b;">(คลิกเพื่อโทรออก)</p>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="contact-card qr-mode">
+                    <div class="qr-frame">
+                        <img src="img/line.png" class="qr-big-img" alt="Scan LINE">
+                    </div>
+                    <div class="text-content">
+                        <h4>LINE Official</h4>
+                        <p>สแกนเพิ่มเพื่อสอบถามข้อมูล</p>
                     </div>
                 </div>
-                <div class="qr-box"><img src="img/linktree.png" class="qr-img">
-                    <div>
+
+                <div class="contact-card qr-mode">
+                    <div class="qr-frame">
+                         <img src="img/linktree.png" class="qr-big-img" alt="Scan Linktree">
+                    </div>
+                    <div class="text-content">
                         <h4>LINKTREE</h4>
-                        <p style="font-size:0.9rem;">ช่องทางการติดตาม</p>
+                        <p>สแกนเพื่อดูช่องทางติดตามทั้งหมด</p>
                     </div>
                 </div>
             </div>
+
             <div class="map-wrapper">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.8685350237242!2d98.9981406!3d18.892912499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da22be0d47bf9d%3A0x41a004b21476d36a!2zVlhWWCs1NzYg4Lit4Liz4LmA4Lig4Lit4Liq4Lix4LiZ4LiX4Lij4Liy4LiiIOC5gOC4iuC4teC4ouC4h-C5g-C4q-C4oeC5iA!5e0!3m2!1sth!"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.8685350237242!2d98.9981406!3d18.892912499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da22be0d47bf9d%3A0x41a004b21476d36a!2zVlhWWCs1NzYg4Lit4Liz4LmA4Lig4Lit4Liq4Lix4LiZ4LiX4Lij4Liy4LiiIOC5gOC4iuC4teC4ouC4h-C5g-C4q-C4oeC5iA!5e0!3m2!1sth!"
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
-
     </section>
+
+    <footer>
+        <p>© FUSION OFFICIAL</p>
+    </footer>
 
     <script>
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
 
-        // ฟังก์ชันเปิด-ปิดเมนู
         function mobileMenu() {
-            hamburger.classList.toggle("active"); // เปลี่ยนไอคอนเป็นรูป X
-            navMenu.classList.toggle("active");   // เลื่อนเมนูออกมา
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
         }
 
-        // ฟังก์ชันปิดเมนูเมื่อกดที่ลิงก์
         function closeMenu() {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
         }
     </script>
-    <footer>
-        <p>© FUSION OFFICIAL</p>
-    </footer>
 </body>
-
 </html>
